@@ -13,6 +13,7 @@ import {
   createParentalService,
   createExpertResponseService,
   createLikeService,
+  createGreedyService,
 } from "../services/backend-service";
 import ExpandableText from "./ExpandableText";
 import Like from "./Like";
@@ -48,7 +49,7 @@ const QueryBox = () => {
     setIsLoading(true); // Triggers the loading animation
 
     // Creates post request for backend gpt model
-    const { request, cancel } = createResponseService().postMessages([
+    const { request, cancel } = createGreedyService().postMessages([
       { role: "user", content: data.query },
     ]);
 

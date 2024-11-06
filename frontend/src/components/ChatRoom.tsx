@@ -13,6 +13,7 @@ import {
   createParentalService,
   createExpertResponseService,
   createLikeService,
+  createCustomChatService,
 } from "../services/backend-service";
 import "./ChatRoom.css";
 
@@ -63,7 +64,7 @@ function ChatRoom() {
 
     // console.log("PAYLOAD", payload);
     // We construct post request to include the interaction history
-    const { request, cancel } = createResponseService().postMessages(payload);
+    const { request, cancel } = createCustomChatService().postMessages(payload);
 
     // Sends request
     request

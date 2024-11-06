@@ -21,6 +21,7 @@ const schema = z.object({
   subject: z.string(),
   modifier: z.string(),
   additional: z.string(),
+  slang: z.string(),
 });
 type FormData = z.infer<typeof schema>;
 
@@ -29,12 +30,14 @@ type FormData = z.infer<typeof schema>;
  * @param subject the subject to ask the GPT model about
  * @param modifier tone modifiers to tailor the response
  * @param additional additional info the for the model to be aware of
+ * @param slang how much slang to use in the response
  * @return formated string to be sent as query to model
  */
 const formatString = (
   subject: string,
   modifier: string,
-  additional: string
+  additional: string,
+  slang: string
 ) => {
   return (
     "Tell me about: [" +
@@ -44,6 +47,9 @@ const formatString = (
     "]" +
     ", also please keep this in mind : [" +
     additional +
+    "]" + 
+    ", also use as much slang as the user wants : [" +
+    slang +
     "]."
   );
 };
@@ -75,7 +81,7 @@ const QueryForm = () => {
     const { request, cancel } = createResponseService().postMessages([
       {
         role: "user",
-        content: formatString(data.subject, data.modifier, data.additional),
+        content: formatString(data.subject, data.modifier, data.additional, data.slang),
       },
     ]);
 
@@ -127,6 +133,16 @@ const QueryForm = () => {
           <input
             {...register("additional")}
             id="additional"
+            type="text"
+            className="form-control"
+          />
+
+          <label htmlFor="slang" className="form-label">
+            How much slang do you want me to use?:
+          </label>
+          <input
+            {...register("slang")}
+            id="slang"
             type="text"
             className="form-control"
           />

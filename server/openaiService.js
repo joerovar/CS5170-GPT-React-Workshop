@@ -3,12 +3,16 @@
  * Provides connection, and response function wrapper
  * @author Christopher Curtis
  */
+// Load environment variables from .env file
+import dotenv from 'dotenv';
+dotenv.config();
 import OpenAI from 'openai';
 import fs from 'fs';
+const apiKey = process.env.API_KEY;
 
 // Creates an OpenAI connection using the provided api key
 const openai = new OpenAI({
-    apiKey: "<YOUR API KEY HERE>"
+    apiKey: apiKey,
 });
 
 /**
@@ -18,7 +22,7 @@ const openai = new OpenAI({
  * @returns gpt response object
  */
 const getGptResonse =  async (messages) => await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o",
     messages: messages,
 });
 

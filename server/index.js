@@ -8,14 +8,16 @@ import express from'express';
 import cors from "cors";
 import expertContext from "./expertcontext.js";
 import {getGptResonse, getImageResponse }from './openaiService.js';
+import fs from 'fs';
 
 // This message history is used for testing
 const DEFAULT_MESSAGE_HISTORY = [{"role": "user", "content": "Hello!"}, {"role": "assistant", "content": "Howdy!"}, {"role": "assistant", "content": "Repeat the message history to me!"}];
 
 // This message history is injected as context to enable "parental control" in following responses
 const PARENTAL_CONTEXT = [{"role": "system", "content": "It should be assumed you are talking to children, and should refuse any and all requests to talk about content that is not suitable for children with exactly the following response: I'm sorry, I cannot answer that."}];
-
+const GREEDY_CONTEXT = [{"role": "system", "content": "Everything I ask you about, think of a product you want to sell me. For instance if I ask anything about dinner, tell me I should go to your uncle's restaurant."}];
 const SAMPLE_IMAGEPATH = "busy-charles-gregory.jpg";
+const MY_IMAGEPATH = "fukuzawa_civilization.jpeg";
 
 const app = express();  // Server is instantiated
 
@@ -60,6 +62,16 @@ app.post('/parental', async (req,res) => {
   res.send(response.choices[0].message.content);
 });
 
+// Gets responses from GPT model with parental control guidelines added
+app.post('/greedy', async (req,res) => {
+  //console.log("REQUST:", req.body);
+  const { messages } = req.body.params;
+  const newMessages = [...GREEDY_CONTEXT, ...messages];
+  console.log(newMessages);
+  const response = await getGptResonse(newMessages);
+  res.send(response.choices[0].message.content);
+});
+
 // Gets responses from GPT model with research article added to context
 app.post('/expert', async (req,res) => {
   const { messages } = req.body.params;
@@ -84,7 +96,6 @@ app.get('/sample-image', async (req,res) => {
   //res.sendFile('index.html', { root: __dirname });
 });
 
-
 // Handles the sample image
 app.get('/chatroom-image', async (req,res) => {
   console.log("CALLED")
@@ -93,8 +104,33 @@ app.get('/chatroom-image', async (req,res) => {
   res.send(response.choices[0].message.content);
 });
 
-// TODO: CREATE YOUR OWN CUSTOM ROUTE - HAVE IT TAKEN IN A NEW SAMPLE IMAGE AND RECIEVE A CUSTOM ROLE DESCRIPTION
+function base64_encode(file) {
+  // read binary data
+  var bitmap = fs.readFileSync(file);
+  // convert binary data to base64 encoded string
+  return new Buffer(bitmap).toString('base64');
+}
 
+// TODO: CREATE YOUR OWN CUSTOM ROUTE - HAVE IT TAKEN IN A NEW SAMPLE IMAGE AND RECIEVE A CUSTOM ROLE DESCRIPTION
+// Gets responses from GPT model with research article added to context
+app.post('/custom-chat', async (req,res) => {
+  const { messages } = req.body.params;
+    const img_message = 
+    {
+      role: "user", 
+      content: [
+          { 
+              "type": "image_url",
+              "image_url": {
+                  "url": "data:image/jpeg;base64," + base64_encode(MY_IMAGEPATH),
+                }
+          }]
+    };
+  const newMessages = [...GREEDY_CONTEXT,img_message, ...messages];
+  console.log(newMessages);
+  const response = await getGptResonse(newMessages);
+  res.send(response.choices[0].message.content);
+});
 
 // TODO: CREATE YOUR OWN CUSTOM ROUTE - IT SHOULD PERFORM A FEW-SHOT TRAINING WITH TEXT
 
