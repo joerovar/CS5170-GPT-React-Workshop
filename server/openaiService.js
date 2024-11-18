@@ -21,9 +21,10 @@ const openai = new OpenAI({
  * @param messages the message history to load in
  * @returns gpt response object
  */
-const getGptResonse =  async (messages) => await openai.chat.completions.create({
-    model: "gpt-4o",
+const getGptResponse =  async (messages) => await openai.chat.completions.create({
+    model: "gpt-4o-mini",
     messages: messages,
+    max_tokens: 100,
 });
 
 function base64_encode(file) {
@@ -34,14 +35,14 @@ function base64_encode(file) {
 }
 
 const getImageResponse =  async (messages, path) => await openai.chat.completions.create({
-    model: "gpt-4o",
+    model: "gpt-4o-mini",
     messages: [
     {
         role: "user", 
         content: [
             {
                 "type": "text",
-                "text": "Describe this image"
+                "text": "Describe this image in less than 50 words."
               },
             { 
                 "type": "image_url",
@@ -51,6 +52,7 @@ const getImageResponse =  async (messages, path) => await openai.chat.completion
         }] 
     }, 
      ...messages],
+    max_tokens: 100,
 });
 
 export { getGptResonse, getImageResponse };

@@ -10,42 +10,39 @@ import { useState } from "react";
 import {
   // Backend model route options
   createResponseService, // Default
-  createExpertResponseService,
   createLikeService,
+  createExpertResponseService
 } from "../services/backend-service";
 import ExpandableText from "./ExpandableText";
 
 // This defines the schema for the form used, expand here for form input validation
 const schema = z.object({
-  subject: z.string(),
-  modifier: z.string(),
+  interest: z.string(),
+  neighborhood: z.string(),
   additional: z.string(),
   slang: z.string(),
-  neighborhood: z.string(),
 });
 type FormData = z.infer<typeof schema>;
 
 /**
  * Formats the string in a parsable way for the GPT model on the backend
- * @param subject the subject to ask the GPT model about
- * @param modifier tone modifiers to tailor the response
+ * @param interest the subject to ask the GPT model about
+ * @param neighborhood the neighborhood to tailor the response to
  * @param additional additional info the for the model to be aware of
  * @param slang how much slang to use in the response
- * @param neighborhood the neighborhood to tailor the response to
  * @return formated string to be sent as query to model
  */
 const formatString = (
-  subject: string,
-  modifier: string,
+  interest: string,
+  neighborhood: string,
   additional: string,
-  slang: string,
-  neighborhood: string
+  slang: string
 ) => {
   return (
-    "Tell me about: [" +
-    subject +
-    "], answer me with the following tones in mind: [" +
-    modifier +
+    "Propose a solution to repurpose the excess parking to increase the amount of: [" +
+    interest +
+    "], in the following neighborhood: [" +
+    neighborhood +
     "]" +
     ", also please keep this in mind : [" +
     additional +
@@ -61,7 +58,7 @@ const formatString = (
  * Created using a React Hook Form, with fields as defined in the above schema.
  * @returns a QueryBox component
  */
-const QueryForm = () => {
+const ParkingQueryForm = () => {
   // These variables are used for interacting with the form's state
   const {
     register, // Tracks the form fields
@@ -72,8 +69,28 @@ const QueryForm = () => {
   // These variables trach the state of the component
   const [isLoading, setIsLoading] = useState(false); // Wether to show loading animation or not
   const [error, setError] = useState(""); // The error message (if any)
+//   const [query, setQuery] = useState(""); // The most recent user query
   const [queryResponse, setQueryResponse] = useState(""); // The most recent query response
+  
+//   // Handles the like functionality TODO: Implement this
+//   const onLike = () => {
+//     // We construct post request to include the interaction history
+//     const { request, cancel } = createLikeService().post([
+//       { role: "user", content: query },
+//       { role: "assistant", content: queryResponse },
+//     ]);
+//     // Request is sent
+//     request
+//       .then((res) => {
+//         console.log(res.data);
+//       })
+//       .catch((err) => {
+//         setError(err.message);
+//         return false;
+//       });
 
+//     return true;
+//   };
   // Handles the on-sumbit logic for the form
   const onSubmit = (data: FieldValues) => {
     console.log(data);
@@ -83,7 +100,7 @@ const QueryForm = () => {
     const { request, cancel } = createResponseService().postMessages([
       {
         role: "user",
-        content: formatString(data.subject, data.modifier, data.neighborhood, data.additional, data.slang),
+        content: formatString(data.interest, data.neighborhood, data.additional, data.slang),
       },
     ]);
 
@@ -107,40 +124,22 @@ const QueryForm = () => {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         {error && <p className="text-danger">{error}</p>}
-        <p>Ask me about something</p>
+        <h2>Request from me an idea on how to use excess parking</h2>
         <div className="mb-3">
-          <label htmlFor="subject" className="form-label">
-            What do you want to ask me about?
+        <label htmlFor="interest" className="form-label">
+            What are you most interested in?:
           </label>
-          <input
-            {...register("subject")}
-            id="subject"
-            type="text"
-            className="form-control"
-          />
+          <select
+            {...register("interest")}
+            id="interest"
+            className="form-select"
+          >
+            <option value="">Select an interest</option>
+            <option value="green areas">Green areas</option>
+            <option value="affordable housing">Affordable housing</option>
+            <option value="bike lanes">Bike lanes</option>
+          </select>
 
-          <label htmlFor="modifier" className="form-label">
-            Describe the tone you want the response in:
-          </label>
-          <input
-            {...register("modifier")}
-            id="modifier"
-            type="text"
-            className="form-control"
-          />
-
-          <label htmlFor="slang" className="form-label">
-            How much slang do you want me to use?:
-          </label>
-          <input
-            {...register("slang")}
-            id="slang"
-            type="text"
-            className="form-control"
-          />
-        </div>
-
-        <div className="mb-3">
           <label htmlFor="neighborhood" className="form-label">
             Neighborhood:
           </label>
@@ -156,8 +155,22 @@ const QueryForm = () => {
           </select>
         </div>
 
+        <label htmlFor="neighborhood" className="form-label">
+            What are your personal preferences?
+          </label>
+          <select
+            {...register("neighborhood")}
+            id="neighborhood"
+            className="form-select"
+          >
+            <option value="">Values</option>
+            <option value="avoid reducing mobility for low income people">Avoid reducing mobility for low-income people</option>
+            <option value="incentivize active mobility">Incentivize active mobility</option>
+            <option value="increase social mixing">Increase social mixing</option>
+          </select>
+
           <label htmlFor="additional" className="form-label">
-            Is there anything else you want me to know about?:
+            Any other personal preferences you want me to know about?
           </label>
           <input
             {...register("additional")}
@@ -167,11 +180,11 @@ const QueryForm = () => {
           />
         <button className="btn btn-primary mb-3">Submit</button>
       </form>
-
+    {/* Add a space between this and the next button */}
       {isLoading && <div className="spinner-border"></div>}
       <ExpandableText>{queryResponse}</ExpandableText>
     </div>
   );
 };
 
-export default QueryForm;
+export default ParkingQueryForm;

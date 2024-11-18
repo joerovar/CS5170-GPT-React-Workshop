@@ -74,17 +74,17 @@ const createResponseService = () => {
  * Creates a connection for parentally controlled interactions.
  * @returns new HttpService object to the parental route.
  */
-const createParentalService = () => {
-    return new HttpService("/parental");
-}
+// const createParentalService = () => {
+//     return new HttpService("/parental");
+// }
 
 /**
  * Creates a connection for parentally controlled interactions.
  * @returns new HttpService object to the parental route.
  */
-const createGreedyService = () => {
-    return new HttpService("/greedy");
-}
+// const createGreedyService = () => {
+//     return new HttpService("/greedy");
+// }
 
 /**
  * Creates a connection for gpt interactions with specific domain knowledge.
@@ -94,13 +94,13 @@ const createExpertResponseService = () => {
     return new HttpService("/expert");
 }
 
-const createImageService = () => {
-    return new HttpService("/image");
-}
+// const createImageService = () => {
+//     return new HttpService("/image");
+// }
 
-const createSampleImageService = () => {
-    return new HttpService("/sample-image");
-}
+// const createSampleImageService = () => {
+//     return new HttpService("/sample-image");
+// }
 
 const createService = (type: ServiceCategory) => {
     return new HttpService("/" + type);
@@ -119,8 +119,9 @@ const createLikeService = () => {
     return new HttpService("/like");
 }
 
-const createCustomChatService = () => {
-    return new HttpService("/custom-chat");
-}
+// const createCustomChatService = () => {
+//     return new HttpService("/custom-chat");
+// }
 
-export { createResponseService, createParentalService, createGreedyService, createExpertResponseService, createLikeService, createSampleImageService, createImageService, postPayload, createService, createCustomChatService };
+// export { createResponseService, createParentalService, createGreedyService, createExpertResponseService, createLikeService, createSampleImageService, createImageService, postPayload, createService, createCustomChatService };
+export { createResponseService, createExpertResponseService, createLikeService, postPayload, createService };

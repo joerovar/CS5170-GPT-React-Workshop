@@ -10,10 +10,8 @@ import { useState } from "react";
 import {
   // Backend model route options
   createResponseService, // Default
-  createParentalService,
   createExpertResponseService,
   createLikeService,
-  createGreedyService,
 } from "../services/backend-service";
 import ExpandableText from "./ExpandableText";
 import Like from "./Like";
@@ -49,7 +47,7 @@ const QueryBox = () => {
     setIsLoading(true); // Triggers the loading animation
 
     // Creates post request for backend gpt model
-    const { request, cancel } = createGreedyService().postMessages([
+    const { request, cancel } = createResponseService().postMessages([
       { role: "user", content: data.query },
     ]);
 
@@ -96,7 +94,7 @@ const QueryBox = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         {error && <p className="text-danger">{error}</p>}
         <label htmlFor="query" className="form-label">
-          Ask me something:
+          Ask me something
         </label>
         <div className="mb-3 d-flex justify-content-between">
           <input

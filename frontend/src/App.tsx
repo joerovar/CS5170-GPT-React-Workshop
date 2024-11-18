@@ -2,6 +2,7 @@ import "./App.css";
 
 import QueryBox from "./components/QueryBox";
 import QueryForm from "./components/QueryForm";
+import ParkingQueryForm from "./components/ParkingQueryForm";
 import ChatRoom from "./components/ChatRoom";
 import useImage from "./hooks/useImage";
 import useText from "./hooks/useText";
@@ -9,26 +10,30 @@ import { useEffect } from "react";
 import ImageCaptionDisplay from "./components/ImageCaptionDisplay";
 
 function App() {
-  const { image, imgError, imgIsLoading } = useImage("");
-  const { text, textError, textIsLoading } = useText("", "chatroom-image");
+  // const { image, imgError, imgIsLoading } = useImage("");
+  // const { text, textError, textIsLoading } = useText("", "chatroom-image");
 
-  useEffect(() => {
-    console.log(text);
-  }, [text]);
+  // useEffect(() => {
+  //   console.log(text);
+  // }, [text]);
 
   return (
     <div>
-      {(imgIsLoading || textIsLoading) && <div className="spinner-border" />}
+      {/* {(imgIsLoading || textIsLoading) && <div className="spinner-border" />}
       {!imgIsLoading && !textIsLoading && (
         <ImageCaptionDisplay img={image} caption={text} />
-      )}
+      )} */}
+      <br />
+      <h1>Excess Parking Ideation Tool</h1>
       <br />
       <QueryBox />
       <br />
-      <QueryForm />
-      <br />
+      <ParkingQueryForm />
+      {/* <br />
+      <QueryForm /> */}
+      {/* <br />
       <ChatRoom />
-      <br />
+      <br /> */}
     </div>
   );
 }
