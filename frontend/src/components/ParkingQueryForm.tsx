@@ -5,6 +5,8 @@
  * @author Christopher Curtis
  */
 import { FieldValues, useForm } from "react-hook-form";
+import { useEffect } from "react";
+import Papa from "papaparse";
 import { z } from "zod";
 import { useState } from "react";
 import {
@@ -19,8 +21,8 @@ import ExpandableText from "./ExpandableText";
 const schema = z.object({
   interest: z.string(),
   neighborhood: z.string(),
-  additional: z.string(),
-  slang: z.string(),
+  values: z.string(),
+  lingo: z.string(),
 });
 type FormData = z.infer<typeof schema>;
 
@@ -28,15 +30,15 @@ type FormData = z.infer<typeof schema>;
  * Formats the string in a parsable way for the GPT model on the backend
  * @param interest the subject to ask the GPT model about
  * @param neighborhood the neighborhood to tailor the response to
- * @param additional additional info the for the model to be aware of
- * @param slang how much slang to use in the response
+ * @param values additional info the for the model to be aware of
+ * @param lingo how much lingo to use in the response
  * @return formated string to be sent as query to model
  */
 const formatString = (
   interest: string,
   neighborhood: string,
-  additional: string,
-  slang: string
+  values: string,
+  lingo: string
 ) => {
   return (
     "Propose a solution to repurpose the excess parking to increase the amount of: [" +
@@ -44,11 +46,11 @@ const formatString = (
     "], in the following neighborhood: [" +
     neighborhood +
     "]" +
-    ", also please keep this in mind : [" +
-    additional +
+    ", with the user having these values : [" +
+    values +
     "]" + 
-    ", also use as much slang as the user wants : [" +
-    slang +
+    ", taking into account the user's familiarity of urban planning lingo: [" +
+    lingo +
     "]."
   );
 };
@@ -71,7 +73,20 @@ const ParkingQueryForm = () => {
   const [error, setError] = useState(""); // The error message (if any)
 //   const [query, setQuery] = useState(""); // The most recent user query
   const [queryResponse, setQueryResponse] = useState(""); // The most recent query response
-  
+  const [csvData, setCsvData] = useState([]);
+
+  useEffect(() => {
+    fetch("/data/nhood_summary.csv")
+      .then((response) => response.text())
+      .then((text) => {
+        Papa.parse(text, {
+          header: true,
+          complete: (results) => {
+            setCsvData(results.data);
+          },
+        });
+      });
+  }, []);
 //   // Handles the like functionality TODO: Implement this
 //   const onLike = () => {
 //     // We construct post request to include the interaction history
@@ -100,7 +115,7 @@ const ParkingQueryForm = () => {
     const { request, cancel } = createResponseService().postMessages([
       {
         role: "user",
-        content: formatString(data.interest, data.neighborhood, data.additional, data.slang),
+        content: formatString(data.interest, data.neighborhood, data.values, data.lingo),
       },
     ]);
 
@@ -149,40 +164,69 @@ const ParkingQueryForm = () => {
             className="form-select"
           >
             <option value="">Select a neighborhood</option>
-            <option value="inman_square">Inman Square</option>
-            <option value="coolidge_corner">Coolidge Corner</option>
-            <option value="dorchester">Dorchester</option>
+            <option value="Inman">Inman Square</option>
+            <option value="Mattapan">Mattapan</option>
+            <option value="Roxbury">Roxbury</option>
+            <option value="Seaport">Seaport</option>
           </select>
         </div>
 
-        <label htmlFor="neighborhood" className="form-label">
+        <label htmlFor="values" className="form-label">
             What are your personal preferences?
           </label>
           <select
-            {...register("neighborhood")}
-            id="neighborhood"
+            {...register("values")}
+            id="values"
             className="form-select"
           >
-            <option value="">Values</option>
-            <option value="avoid reducing mobility for low income people">Avoid reducing mobility for low-income people</option>
+            <option value="">Select a value</option>
+            <option value="Minimize impact on mobility for low-income people">Minimize impact on mobility for low-income people</option>
             <option value="incentivize active mobility">Incentivize active mobility</option>
             <option value="increase social mixing">Increase social mixing</option>
           </select>
 
-          <label htmlFor="additional" className="form-label">
-            Any other personal preferences you want me to know about?
+          <label htmlFor="lingo" className="form-label">
+            How familiar are you with urban planning lingo?
           </label>
-          <input
-            {...register("additional")}
-            id="additional"
-            type="text"
-            className="form-control"
-          />
+          <select
+            {...register("lingo")}
+            id="lingo"
+            className="form-select"
+          >
+            <option value="">Select a familiarity level</option>
+            <option value="not familiar">Not familiar</option>
+            <option value="familiar">Familiar</option>
+          </select>
         <button className="btn btn-primary mb-3">Submit</button>
       </form>
     {/* Add a space between this and the next button */}
       {isLoading && <div className="spinner-border"></div>}
-      <ExpandableText>{queryResponse}</ExpandableText>
+      {queryResponse}
+      {/* <ExpandableText>{queryResponse}</ExpandableText> */}
+      <div></div>
+      <br />
+      <b>*NOTE: PLEASE REFER TO THE TABLE WITH FURTHER CONTEXT ON SOCIOECONOMIC AND MOBILITY OPTIONS</b>
+      <br />
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Neighborhood</th>
+            <th>Walk Score</th>
+            <th>Jobs 30min</th>
+            <th>Rent per Unit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {csvData.map((row, index) => (
+            <tr key={index}>
+              <td>{row.nhood}</td>
+              <td>{row.walk_score}</td>
+              <td>{row.jobs_30min}</td>
+              <td>{row.rent_punit}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

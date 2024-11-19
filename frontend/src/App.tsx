@@ -25,8 +25,8 @@ function App() {
       )} */}
       <br />
       <h1>Excess Parking Ideation Tool</h1>
-      <br />
-      <QueryBox />
+      {/* <br /> */}
+      {/* <QueryBox /> */}
       <br />
       <ParkingQueryForm />
       {/* <br />
