@@ -13,8 +13,11 @@ The user workflow is currently very simple:
 2. Submit the form for an idea generation by the trained LLM.
 3. Contextualize the idea with basic information collected for the neighborhood. 
 
-## Example use case
+## Use case (Screenshots)
 
+![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/main/start%20use.png?raw=true)
+
+![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/main/full%20use.png?raw=true)
 
 
 # Generic instructions from CS5170-GPT-React-Workshop
