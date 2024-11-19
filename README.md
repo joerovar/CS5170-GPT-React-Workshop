@@ -9,9 +9,9 @@ To run follow the running commands from the React Workshop in class (below). The
 - **What data is the model trained on?** Data on reported unused parking in the broader Boston area, as well as broader urban planning insights on how to convert unused parking spaces to serve the community (e.g., green areas) 
 
 The user workflow is currently very simple:
-1. Complete the forms on the basic interest, the neighborhood, the values, and the familiarity with terminology
+1. Complete the forms on the basic interest, the neighborhood, the values, and the familiarity with terminology.
 2. Submit the form for an idea generation by the trained LLM.
-3. Contextualize the idea with basic information collected for the neighborhood. 
+3. Contextualize the idea with a table of basic information collected for the neighborhood referenced.
 
 ## Use case (Screenshots)
 
