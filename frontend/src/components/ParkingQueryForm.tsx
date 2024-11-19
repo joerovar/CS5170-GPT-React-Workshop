@@ -112,7 +112,7 @@ const ParkingQueryForm = () => {
     setIsLoading(true); // Triggers the loading animation
 
     // Creates post request for backend gpt model
-    const { request, cancel } = createResponseService().postMessages([
+    const { request, cancel } = createExpertResponseService().postMessages([
       {
         role: "user",
         content: formatString(data.interest, data.neighborhood, data.values, data.lingo),
