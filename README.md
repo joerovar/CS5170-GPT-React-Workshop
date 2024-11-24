@@ -2,7 +2,7 @@
 To run follow the running commands from the React Workshop in class (below). The only amendment is that we should add the OpenAI key in a .env file inside server/ with API_KEY={key goes here}.
 
 ## Introduction 
-![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/main/start%20use.png?raw=true)
+![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/mbta-screenshot.png?raw=true)
 
 ## Basic description
 - **What is it?** A chatbot to help people navigating from A to B in a wheelchair accessible manner.
