@@ -4,6 +4,8 @@ To run follow the running commands from the React Workshop in class (below). The
 ## Introduction 
 ![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/mbta-screenshot.png?raw=true)
 
+![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/mockup.png?raw=true)
+
 ## Basic description
 - **What is it?** A chatbot to help people navigating from A to B in a wheelchair accessible manner.
 - **What goal does it serve?** 
