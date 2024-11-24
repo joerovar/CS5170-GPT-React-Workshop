@@ -26,8 +26,6 @@ The system relies on OpenAI's GPT-4o mini. For this preliminary step, the model 
 ## User Interface
 ![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/mockup.png?raw=true)
 
-## Biases and harms
-
 ## Demo
 
 ![til](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/demo.gif)
