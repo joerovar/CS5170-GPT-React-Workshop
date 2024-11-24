@@ -12,7 +12,7 @@ To run follow the running commands from the React Workshop in class (below). The
 
 ## Demo
 
-![til](https://raw.githubusercontent.com/hashrocket/hr-til/master/app/assets/images/banner.png)
+![til](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/demo.gif)
 
 # Generic instructions from CS5170-GPT-React-Workshop
 

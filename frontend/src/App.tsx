@@ -4,6 +4,7 @@ import QueryBox from "./components/QueryBox";
 import QueryForm from "./components/QueryForm";
 import ParkingQueryForm from "./components/ParkingQueryForm";
 import ChatRoom from "./components/ChatRoom";
+import TravelChatRoom from "./components/TravelChatRoom";
 import useImage from "./hooks/useImage";
 import useText from "./hooks/useText";
 import { useEffect } from "react";
@@ -24,7 +25,7 @@ function App() {
         <ImageCaptionDisplay img={image} caption={text} />
       )} */}
       <br />
-      <h1>Let's make your journey accessible</h1>
+      <h1>Accessible Journey Assistant</h1>
       {/* <br />
       <QueryBox />
       <br /> */}
@@ -32,7 +33,8 @@ function App() {
       {/* <br />
       <QueryForm /> */}
       <br />
-      <ChatRoom />
+      {/* <ChatRoom /> */}
+      <TravelChatRoom />
       <br />
     </div>
   );

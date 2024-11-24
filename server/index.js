@@ -137,7 +137,7 @@ app.post('/custom-chat-with-image', async (req, res) => {
 // Gets responses from GPT model with travel expert context (no image included)
 app.post('/travel-chat', async (req, res) => {
   const { messages } = req.body.params;
-  const newMessages = [...travelExpertContext, ...messages];
+  const newMessages = [travelExpertContext, ...messages];
   console.log(newMessages);
   const response = await getGptResponse(newMessages);
   res.send(response.choices[0].message.content);

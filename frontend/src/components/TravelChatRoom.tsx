@@ -9,7 +9,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import {
   // Backend model route options
-  createCustomChatService,
+  createTravelChatService,
 } from "../services/backend-service";
 import "./ChatRoom.css";
 
@@ -60,7 +60,7 @@ function TravelChatRoom() {
 
     // console.log("PAYLOAD", payload);
     // We construct post request to include the interaction history
-    const { request, cancel } = createCustomChatService().postMessages(payload);
+    const { request, cancel } = createTravelChatService().postMessages(payload);
 
     // Sends request
     request
@@ -80,7 +80,7 @@ function TravelChatRoom() {
   // We return the react markup needed for the component
   return (
     <>
-      <h1>Need instructions on how to get from A to B in a wheelchair accessible manner? Chat with me!</h1>
+      <h2>Need instructions on how to get from A to B in a wheelchair accessible manner? Chat with me!</h2>
       <ul className="list-group ChatRoom">
         {messageHistory.length === 0 ? (
           <p>To get started, tell me where you're going from and to where.</p>
