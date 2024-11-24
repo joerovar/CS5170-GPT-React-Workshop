@@ -7,6 +7,7 @@
 import express from'express';
 import cors from "cors";
 import expertContext from "./expertcontext.js";
+import travelExpertContext from './travelexpertcontext.js';
 import {getGptResponse, getImageResponse }from './openaiService.js';
 import fs from 'fs';
 
@@ -111,22 +112,32 @@ function base64_encode(file) {
   return new Buffer(bitmap).toString('base64');
 }
 
-// TODO: CREATE YOUR OWN CUSTOM ROUTE - HAVE IT TAKEN IN A NEW SAMPLE IMAGE AND RECIEVE A CUSTOM ROLE DESCRIPTION
-// Gets responses from GPT model with research article added to context
-app.post('/custom-chat', async (req,res) => {
+// TODO: CREATE YOUR OWN CUSTOM ROUTE - HAVE IT TAKE IN A NEW SAMPLE IMAGE AND RECEIVE A CUSTOM ROLE DESCRIPTION
+
+// Gets responses from GPT model with research article and image added to context
+app.post('/custom-chat-with-image', async (req, res) => {
   const { messages } = req.body.params;
-    const img_message = 
-    {
-      role: "user", 
-      content: [
-          { 
-              "type": "image_url",
-              "image_url": {
-                  "url": "data:image/jpeg;base64," + base64_encode(MY_IMAGEPATH),
-                }
-          }]
-    };
-  const newMessages = [...GREEDY_CONTEXT,img_message, ...messages];
+  const img_message = {
+    role: "user",
+    content: [
+      {
+        type: "image_url",
+        image_url: {
+          url: "data:image/jpeg;base64," + base64_encode(MY_IMAGEPATH),
+        },
+      },
+    ],
+  };
+  const newMessages = [...GREEDY_CONTEXT, img_message, ...messages];
+  console.log(newMessages);
+  const response = await getGptResponse(newMessages);
+  res.send(response.choices[0].message.content);
+});
+
+// Gets responses from GPT model with travel expert context (no image included)
+app.post('/travel-chat', async (req, res) => {
+  const { messages } = req.body.params;
+  const newMessages = [...travelExpertContext, ...messages];
   console.log(newMessages);
   const response = await getGptResponse(newMessages);
   res.send(response.choices[0].message.content);

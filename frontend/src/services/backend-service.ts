@@ -119,9 +119,9 @@ const createLikeService = () => {
     return new HttpService("/like");
 }
 
-// const createCustomChatService = () => {
-//     return new HttpService("/custom-chat");
-// }
+const createTravelChatService = () => {
+    return new HttpService("/travel-chat");
+}
 
 // export { createResponseService, createParentalService, createGreedyService, createExpertResponseService, createLikeService, createSampleImageService, createImageService, postPayload, createService, createCustomChatService };
-export { createResponseService, createExpertResponseService, createLikeService, postPayload, createService };
+export { createResponseService, createExpertResponseService, createLikeService, postPayload, createService, createTravelChatService };

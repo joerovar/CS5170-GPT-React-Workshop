@@ -24,16 +24,16 @@ function App() {
         <ImageCaptionDisplay img={image} caption={text} />
       )} */}
       <br />
-      <h1>Excess Parking Ideation Tool</h1>
-      {/* <br /> */}
-      {/* <QueryBox /> */}
-      <br />
-      <ParkingQueryForm />
+      <h1>Let's make your journey accessible</h1>
+      {/* <br />
+      <QueryBox />
+      <br /> */}
+      {/* <ParkingQueryForm /> */}
       {/* <br />
       <QueryForm /> */}
-      {/* <br />
+      <br />
       <ChatRoom />
-      <br /> */}
+      <br />
     </div>
   );
 }

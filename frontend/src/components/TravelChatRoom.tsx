@@ -9,10 +9,6 @@ import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import {
   // Backend model route options
-  createResponseService, // Default
-  createParentalService,
-  createExpertResponseService,
-  createLikeService,
   createCustomChatService,
 } from "../services/backend-service";
 import "./ChatRoom.css";
@@ -28,7 +24,7 @@ type FormData = z.infer<typeof schema>;
  * Created using a React Hook Form, with fields as defined in the above schema.
  * @returns a ChatRoom component
  */
-function ChatRoom() {
+function TravelChatRoom() {
   // These variables are used for interacting with the form's state
   const {
     register, // Tracks the form fields
@@ -84,10 +80,10 @@ function ChatRoom() {
   // We return the react markup needed for the component
   return (
     <>
-      <h1>Chat with me!</h1>
+      <h1>Need instructions on how to get from A to B in a wheelchair accessible manner? Chat with me!</h1>
       <ul className="list-group ChatRoom">
         {messageHistory.length === 0 ? (
-          <p>Let's get started!</p>
+          <p>To get started, tell me where you're going from and to where.</p>
         ) : (
           messageHistory.map((item, index) => (
             <li
@@ -125,4 +121,4 @@ function ChatRoom() {
   );
 }
 
-export default ChatRoom;
+export default TravelChatRoom;
