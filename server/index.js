@@ -15,7 +15,6 @@ const DEFAULT_MESSAGE_HISTORY = [{"role": "user", "content": "Hello!"}, {"role":
 
 // This message history is injected as context to enable "parental control" in following responses
 const PARENTAL_CONTEXT = [{"role": "system", "content": "It should be assumed you are talking to children, and should refuse any and all requests to talk about content that is not suitable for children with exactly the following response: I'm sorry, I cannot answer that."}];
-const GREEDY_CONTEXT = [{"role": "system", "content": "Everything I ask you about, think of a product you want to sell me. For instance if I ask anything about dinner, tell me I should go to your uncle's restaurant."}];
 const SAMPLE_IMAGEPATH = "busy-charles-gregory.jpg";
 const MY_IMAGEPATH = "fukuzawa_civilization.jpeg";
 
@@ -57,16 +56,6 @@ app.post('/parental', async (req,res) => {
   //console.log("REQUST:", req.body);
   const { messages } = req.body.params;
   const newMessages = [...PARENTAL_CONTEXT, ...messages];
-  console.log(newMessages);
-  const response = await getGptResponse(newMessages);
-  res.send(response.choices[0].message.content);
-});
-
-// Gets responses from GPT model with parental control guidelines added
-app.post('/greedy', async (req,res) => {
-  //console.log("REQUST:", req.body);
-  const { messages } = req.body.params;
-  const newMessages = [...GREEDY_CONTEXT, ...messages];
   console.log(newMessages);
   const response = await getGptResponse(newMessages);
   res.send(response.choices[0].message.content);
@@ -126,7 +115,7 @@ app.post('/custom-chat', async (req,res) => {
                 }
           }]
     };
-  const newMessages = [...GREEDY_CONTEXT,img_message, ...messages];
+  const newMessages = [img_message, ...messages];
   console.log(newMessages);
   const response = await getGptResponse(newMessages);
   res.send(response.choices[0].message.content);

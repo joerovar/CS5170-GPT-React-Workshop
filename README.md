@@ -78,6 +78,21 @@ For observation-based evaluation, we will rely on the usage logs generated durin
 
 These statistics will be documented in a report with visualizations such as charts.
 
+## User Interface
+![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/mockup.png?raw=true)
+
+## Demo
+
+![til](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/demo.gif)
+
+## References
+
+Mabunda, K., & Ade-Ibijola, A. (2019, November). Pathbot: An intelligent chatbot for guiding visitors and locating venues. In 2019 6th international conference on soft computing & machine intelligence (ISCMI) (pp. 160-168). IEEE.
+
+Dimo, G., van Vuuren, J. J., & van Vuuren, A. M. J. (2022). Using a Smart Chatbot System as a Communication Tool for Campus Navigation.
+
+Sobhana, M., Yamini, A., Hindu, K., & Narayana, Y. L. (2022). Navbot—College Navigation Chatbot Using Deep Neural Network. In IoT Based Control Networks and Intelligent Systems: Proceedings of 3rd ICICNIS 2022 (pp. 533-545). Singapore: Springer Nature Singapore.
+
 # Generic instructions from CS5170-GPT-React-Workshop
 
 Follow along workshop for CS5170
