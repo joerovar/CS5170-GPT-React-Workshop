@@ -86,12 +86,11 @@ These statistics will be documented in a report with visualizations such as char
 ![til](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/demo.gif)
 
 ## References
+Borsci, Simone, Alessio Malizia, Martin Schmettow, Frank van der Velde, Gunay Tariverdiyeva, Divyaa Balaji, and Alan Chamberlain. 2022. “The Chatbot Usability Scale: The Design and Pilot of a Usability Scale for Interaction with AI-Based Conversational Agents.” Personal and Ubiquitous Computing 26 (1): 95–119. https://doi.org/10.1007/s00779-021-01582-9.
 
-Mabunda, K., & Ade-Ibijola, A. (2019, November). Pathbot: An intelligent chatbot for guiding visitors and locating venues. In 2019 6th international conference on soft computing & machine intelligence (ISCMI) (pp. 160-168). IEEE.
+Peng, Zhong-Ren, Kai-Fa Lu, Yanghe Liu, and Wei Zhai. 2024. “The Pathway of Urban Planning AI: From Planning Support to Plan-Making.” Journal of Planning Education and Research 44 (4): 2263–79. https://doi.org/10.1177/0739456X231180568.
 
-Dimo, G., van Vuuren, J. J., & van Vuuren, A. M. J. (2022). Using a Smart Chatbot System as a Communication Tool for Campus Navigation.
-
-Sobhana, M., Yamini, A., Hindu, K., & Narayana, Y. L. (2022). Navbot—College Navigation Chatbot Using Deep Neural Network. In IoT Based Control Networks and Intelligent Systems: Proceedings of 3rd ICICNIS 2022 (pp. 533-545). Singapore: Springer Nature Singapore.
+Hasan, Farasath, Amila Jayasinghe, and Sahan Sathsarana. 2023. “Specialized Urban Planning Chatbot: A Participatory Approach for Evaluating Efficiency.” Bhumi, The Planning Research Journal 10 (2). https://doi.org/10.4038/bhumi.v10i2.106.
 
 # Generic instructions from CS5170-GPT-React-Workshop
 

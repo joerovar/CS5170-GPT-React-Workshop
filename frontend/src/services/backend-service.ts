@@ -71,22 +71,6 @@ const createResponseService = () => {
 }
 
 /**
- * Creates a connection for parentally controlled interactions.
- * @returns new HttpService object to the parental route.
- */
-// const createParentalService = () => {
-//     return new HttpService("/parental");
-// }
-
-/**
- * Creates a connection for parentally controlled interactions.
- * @returns new HttpService object to the parental route.
- */
-// const createGreedyService = () => {
-//     return new HttpService("/greedy");
-// }
-
-/**
  * Creates a connection for gpt interactions with specific domain knowledge.
  * @returns new HttpService object to the expert route.
  */
@@ -119,9 +103,8 @@ const createLikeService = () => {
     return new HttpService("/like");
 }
 
-// const createCustomChatService = () => {
-//     return new HttpService("/custom-chat");
-// }
+const createCustomChatService = () => {
+    return new HttpService("/custom-chat");
+}
 
-// export { createResponseService, createParentalService, createGreedyService, createExpertResponseService, createLikeService, createSampleImageService, createImageService, postPayload, createService, createCustomChatService };
-export { createResponseService, createExpertResponseService, createLikeService, postPayload, createService };
+export { createResponseService, createExpertResponseService, createLikeService, postPayload, createService, createCustomChatService };

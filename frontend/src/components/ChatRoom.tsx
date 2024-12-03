@@ -10,7 +10,6 @@ import { z } from "zod";
 import {
   // Backend model route options
   createResponseService, // Default
-  createParentalService,
   createExpertResponseService,
   createLikeService,
   createCustomChatService,

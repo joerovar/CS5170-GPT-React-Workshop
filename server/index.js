@@ -51,16 +51,6 @@ app.post('/response', async (req,res) => {
   res.send(response.choices[0].message.content);
 });
 
-// Gets responses from GPT model with parental control guidelines added
-app.post('/parental', async (req,res) => {
-  //console.log("REQUST:", req.body);
-  const { messages } = req.body.params;
-  const newMessages = [...PARENTAL_CONTEXT, ...messages];
-  console.log(newMessages);
-  const response = await getGptResponse(newMessages);
-  res.send(response.choices[0].message.content);
-});
-
 // Gets responses from GPT model with research article added to context
 app.post('/expert', async (req,res) => {
   const { messages } = req.body.params;
