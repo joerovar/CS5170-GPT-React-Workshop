@@ -1,0 +1,65 @@
+.thumbs-up-btn {
+  font-size: 1.2rem; /* Larger font size */
+  padding: 0.5rem 1rem; /* Padding for spacing */
+  display: flex; /* Flex layout for emoji and text */
+  justify-content: center; /* Center-align content horizontally */
+  align-items: center; /* Center-align content vertically */
+  gap: 0.5rem; /* Space between emoji and text */
+  background-color: transparent; /* Transparent background */
+  color: #000; /* Black text */
+  border: 2px solid #000; /* Black border */
+  border-radius: 5px; /* Rounded corners */
+  transition: all 0.2s ease-in-out; /* Smooth transitions */
+  margin: 1rem auto; /* Center-align button and add spacing */
+  max-width: 150px; /* Ensure consistent button width */
+}
+
+.thumbs-up-btn:hover {
+  background-color: #087243; /* Dark green background */
+  color: #fff; /* White text */
+  border-color: #087243; /* Border matches background */
+  cursor: pointer; /* Pointer cursor for interactivity */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.thumbs-up-btn.clicked {
+  background-color: #087243; /* Persist dark green background */
+  color: #fff; /* Persist white text */
+  border-color: #333; /* Darker border for clicked state */
+  transform: scale(1.1); /* Subtle enlargement */
+}
+
+  .response-box {
+    border: 2px solid #333; /* Dark border for visibility */
+    border-radius: 8px; /* Rounded corners */
+    padding: 1rem; /* Spacing inside the box */
+    margin-top: 1rem; /* Space above the box */
+    background-color: #f9f9f9; /* Light background for contrast */
+    color: #333; /* Text color */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for emphasis */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .response-box:hover {
+    background-color: #f0f0f0; /* Slightly darker background on hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  }
+
+  .small-table {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+  
+  .small-table th, 
+  .small-table td {
+    padding: 5px;
+    text-align: center;
+  }
+  
+  .small-table th {
+    background-color: #f1f1f1;
+  }
+  
+  .small-table tr:nth-child(even) {
+    background-color: #fafafa;
+  }

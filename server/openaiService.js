@@ -24,7 +24,7 @@ const openai = new OpenAI({
 const getGptResponse =  async (messages) => await openai.chat.completions.create({
     model: "gpt-4o-mini",
     messages: messages,
-    max_tokens: 160,
+    max_tokens: 200,
 });
 
 function base64_encode(file) {

@@ -1,47 +1,56 @@
 import "./App.css";
-
-import QueryBox from "./components/QueryBox";
-import QueryForm from "./components/QueryForm";
 import ParkingQueryForm from "./components/ParkingQueryForm";
-import ChatRoom from "./components/ChatRoom";
 import useImage from "./hooks/useImage";
-import useText from "./hooks/useText";
-import { useEffect } from "react";
-import ImageCaptionDisplay from "./components/ImageCaptionDisplay";
 
 function App() {
-  // const { image, imgError, imgIsLoading } = useImage("");
-  // const { text, textError, textIsLoading } = useText("", "chatroom-image");
-
-  // useEffect(() => {
-  //   console.log(text);
-  // }, [text]);
-
+  const { image, imgError, imgIsLoading } = useImage("");
   return (
-    <div>
-      {/* {(imgIsLoading || textIsLoading) && <div className="spinner-border" />}
-      {!imgIsLoading && !textIsLoading && (
-        <ImageCaptionDisplay img={image} caption={text} />
-      )} */}
-      <br />
-      <h1>Excess Parking Ideation Tool</h1>
-      {/* <br /> */}
-      {/* <QueryBox /> */}
-      <br />
-      <ParkingQueryForm />
-      {/* <br />
-      <QueryForm /> */}
-      {/* <br />
-      <ChatRoom />
-      <br /> */}
+    <div id="root-container">
+      {/* Main content container */}
+      <div className="content-container">
+        {imgIsLoading && <div className="spinner-border" />}
+        {!imgIsLoading && image && <img src={image} alt="Generated content" />}
+        {imgError && <div className="error">Failed to load image: {imgError}</div>}
+        
+        <h1>Excess Parking Tool</h1>
+        <p>
+          Curious on how the parking space in your neighborhood could be repurposed?
+        </p>
+        <p>
+          Fill out the form below to get started.
+        </p>
+        {/* Left-aligned form */}
+        <div className="form-container">
+          <ParkingQueryForm />
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="footer">
+      <p>This tool is experimental.</p>
+      <p>
+        <strong>Data privacy statement:</strong> We do not share your data with third parties. Your information is used solely to improve your user experience.
+      </p>
+      <p>
+        <strong>Assumptions:</strong>
+      </p>
+      <ul>
+        <li>
+          Sample sizes (and therefore realistic estimates of available parking spaces) vary significantly across neighborhoods.
+        </li>
+        <li>
+          We assume a 1:2 ratio for housing units. This ratio might not account for larger family needs, leading to potential overestimation of the benefits.
+        </li>
+        <li>
+          The model assumes that all parking spaces can be rented out, which might overestimate the potential benefits.
+        </li>
+        <li>
+          We presume zoning regulations permit converting parking spaces into housing units, though this may not always be feasible.
+        </li>
+      </ul>
+    </div>
     </div>
   );
 }
 
 export default App;
-
-/**
- * <QueryForm />
-      <br />
-      <ChatRoom />
- */

@@ -78,13 +78,9 @@ const createExpertResponseService = () => {
     return new HttpService("/expert");
 }
 
-// const createImageService = () => {
-//     return new HttpService("/image");
-// }
-
-// const createSampleImageService = () => {
-//     return new HttpService("/sample-image");
-// }
+const createIntroImageService = () => {
+    return new HttpService("/intro-image");
+}
 
 const createService = (type: ServiceCategory) => {
     return new HttpService("/" + type);
@@ -107,4 +103,4 @@ const createCustomChatService = () => {
     return new HttpService("/custom-chat");
 }
 
-export { createResponseService, createExpertResponseService, createLikeService, postPayload, createService, createCustomChatService };
+export { createResponseService, createExpertResponseService, createLikeService, postPayload, createService, createCustomChatService, createIntroImageService };

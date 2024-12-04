@@ -1,17 +1,61 @@
-/* Ensure the entire screen has a black background */
+/* Global styles for the entire page */
 html, body {
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
-    height: 100%; /* Ensure full height */
-    width: 100%; /* Ensure full width */
+    height: 100%; /* Full viewport height */
+    width: 100%; /* Full viewport width */
+    font-family: Arial, sans-serif; /* Add a global font family */
 }
 
-/* Target the root container for React */
+/* Main React container (#root) */
 #root {
+    display: flex; /* Enable flexible layout */
+    min-height: 100vh; /* Ensure it spans the full viewport height */
+    background-color: rgb(212, 236, 245); /* Set background color */
+}
+
+/* Container for content excluding footer */
+.content-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Full viewport height */
-    background-color: rgb(228, 178, 178); /* Fallback black for #root */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: flex-start; /* Align content to the left */
+    width: 100%;
+    padding: 20px; /* Add some padding for spacing */
+}
+
+/* Form container - left-aligned form */
+.form-container {
+    width: 100%; /* Use full width of parent */
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    padding: 20px; /* Add spacing around the form */
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+/* Footer styles */
+.footer {
+    margin-top: auto; /* Push footer to the bottom */
+    padding: 10px; /* Add space inside the footer */
+    background-color: #f8f9fa; /* Light gray background */
+    color: #333; /* Dark text */
+    font-size: 0.9rem; /* Smaller font size */
+    text-align: left; /* Center-align text */
+}
+
+/* Title and image styling */
+img {
+    width: 400px; /* Fixed image width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Add spacing below the image */
+}
+
+h1 {
+    font-size: 3rem; /* Larger font size for emphasis */
+    color: #4a1813; /* Vibrant text color */
+    text-transform: uppercase; /* Capitalize all letters */
+    font-family: 'Comic Sans MS', 'Cursive', sans-serif; /* Playful font */
+    text-shadow: 2px 2px 4px rgba(7, 7, 7, 0.3); /* Subtle shadow for depth */
+    margin-bottom: 20px; /* Add spacing below the title */
+    letter-spacing: 2px; /* Add spacing between letters */
 }

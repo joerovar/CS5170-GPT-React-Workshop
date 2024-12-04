@@ -1,5 +1,7 @@
-nhood,walk_score,jobs_30min,rent_punit
-Inman,95.0,258815.0,1408.0
-Mattapan,67.0,13575.0,1250.0
-Roxbury,84.0,196861.0,1395.0
-Seaport,80.0,557629.0,3000.0
+nhood,walk_score,jobs_30min,bg_pop_den,rent_punit,sample_size
+Alewife,71,"67,586",30,"$2,443",4
+Central,95,"515,650",45,"$1,743",4
+Dorchester,85,"98,117",30,"$1,485",12
+Jamaica Plain,85,"221,060",37,$817,7
+Roxbury,83,"196,860",32,"$1,395",7
+South Boston,91,"409,282",20,"$1,891",5

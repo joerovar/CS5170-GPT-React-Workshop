@@ -15,7 +15,7 @@ const DEFAULT_MESSAGE_HISTORY = [{"role": "user", "content": "Hello!"}, {"role":
 
 // This message history is injected as context to enable "parental control" in following responses
 const PARENTAL_CONTEXT = [{"role": "system", "content": "It should be assumed you are talking to children, and should refuse any and all requests to talk about content that is not suitable for children with exactly the following response: I'm sorry, I cannot answer that."}];
-const SAMPLE_IMAGEPATH = "busy-charles-gregory.jpg";
+const INTRO_IMAGEPATH = "intro.jpg";
 const MY_IMAGEPATH = "fukuzawa_civilization.jpeg";
 
 const app = express();  // Server is instantiated
@@ -69,9 +69,9 @@ app.post('/like', async (req,res) => {
 });
 
 // Tests the image availability
-app.get('/sample-image', async (req,res) => {
+app.get('/intro-image', async (req,res) => {
   console.log("Sending Sample Image");
-  res.sendFile(SAMPLE_IMAGEPATH, { root: "./" });
+  res.sendFile(INTRO_IMAGEPATH, { root: "./" });
   //res.sendFile('index.html', { root: __dirname });
 });
 

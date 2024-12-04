@@ -1,32 +1,32 @@
 import { useEffect, useState } from "react";
-import { createImageService, createSampleImageService } from "../services/backend-service.ts";
+import { createIntroImageService } from "../services/backend-service.ts";
 import { CanceledError } from "../services/api-client";
 
+const useImage = (info: string) => {
+  const [image, setImage] = useState<string | null>(null); // Use a string URL for the image
+  const [imgError, setImgError] = useState("");
+  const [imgIsLoading, setImgIsLoading] = useState(false);
 
-const useImage = (info: string) =>{
-    const [image, setImage] = useState(new Blob());
-    const [imgError, setImgError] = useState("");
-    const [imgIsLoading, setImgIsLoading] = useState(false);
-  
-    useEffect(() => {
-        setImgIsLoading(true);
-  
-      const { request, cancel } = createSampleImageService().getImage("");
-      request
-        .then((res) => {
-          setImage(res.data);
-          setImgIsLoading(false);
-        })
-        .catch((err) => {
-          if (err instanceof CanceledError) return;
-          setImgError(err.message);
-          setImgIsLoading(false);
-        });
-  
-      return () => cancel();
-    }, [info]);
+  useEffect(() => {
+    setImgIsLoading(true);
 
-    return { image, imgError, imgIsLoading, setImage, setImgError, setImgIsLoading };
-}
+    const { request, cancel } = createIntroImageService().getImage("");
+    request
+      .then((res) => {
+        const imageURL = URL.createObjectURL(res.data); // Convert Blob to a URL
+        setImage(imageURL);
+        setImgIsLoading(false);
+      })
+      .catch((err) => {
+        if (err instanceof CanceledError) return;
+        setImgError(err.message);
+        setImgIsLoading(false);
+      });
+
+    return () => cancel();
+  }, [info]);
+
+  return { image, imgError, imgIsLoading };
+};
 
 export default useImage;
