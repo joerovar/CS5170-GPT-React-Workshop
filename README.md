@@ -18,7 +18,6 @@ The user workflow is currently very simple:
 
 ![til](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/demo.gif)
 
-
 # User Feedback Plan
 
 ## Recruitment Strategy Plan
