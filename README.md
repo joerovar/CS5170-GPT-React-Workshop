@@ -13,11 +13,11 @@ The user workflow is currently very simple:
 2. Submit the form for an idea generation by the trained LLM.
 3. Contextualize the idea with a table of basic information collected for the neighborhood referenced.
 
-## Use case (Screenshots)
 
-![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/main/start%20use.png?raw=true)
+## Demo
 
-![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/main/full%20use.png?raw=true)
+![til](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/demo.gif)
+
 
 # User Feedback Plan
 
@@ -81,9 +81,6 @@ These statistics will be documented in a report with visualizations such as char
 ## User Interface
 ![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/mockup.png?raw=true)
 
-## Demo
-
-![til](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/demo.gif)
 
 ## References
 Borsci, Simone, Alessio Malizia, Martin Schmettow, Frank van der Velde, Gunay Tariverdiyeva, Divyaa Balaji, and Alan Chamberlain. 2022. “The Chatbot Usability Scale: The Design and Pilot of a Usability Scale for Interaction with AI-Based Conversational Agents.” Personal and Ubiquitous Computing 26 (1): 95–119. https://doi.org/10.1007/s00779-021-01582-9.
