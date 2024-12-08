@@ -77,10 +77,6 @@ For observation-based evaluation, we will rely on the usage logs generated durin
 
 These statistics will be documented in a report with visualizations such as charts.
 
-## User Interface
-![alt text](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/mockup.png?raw=true)
-
-
 ## References
 Borsci, Simone, Alessio Malizia, Martin Schmettow, Frank van der Velde, Gunay Tariverdiyeva, Divyaa Balaji, and Alan Chamberlain. 2022. “The Chatbot Usability Scale: The Design and Pilot of a Usability Scale for Interaction with AI-Based Conversational Agents.” Personal and Ubiquitous Computing 26 (1): 95–119. https://doi.org/10.1007/s00779-021-01582-9.
 
