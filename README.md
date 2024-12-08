@@ -16,7 +16,7 @@ The user workflow is currently very simple:
 
 ## Demo
 
-![til](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/disabilities/demo.gif)
+![til](https://github.com/joerovar/CS5170-GPT-React-Workshop/blob/main/demo.gif)
 
 # User Feedback Plan
 
